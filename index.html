@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f3f6fb">
+    <meta name="description" content="Lumina — შექმენი შენი ანგარიში">
+    <title>Lumina — რეგისტრაცია</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lumina">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Lumina</span>
+      </a>
+      <div class="topbar-tools">
+        <label class="sr-only" for="language" data-i18n="languageLabel">ენა</label>
+        <select class="language-select" id="language" aria-label="ენა">
+          <option value="ka">ქართული</option>
+          <option value="en">English</option>
+          <option value="ru">Русский</option>
+        </select>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">☾</span>
+          <span data-i18n="themeNight">საღამოს ფონი</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="screen-stack">
+        <section class="signup-card" id="signup-screen" aria-labelledby="page-title">
+          <div class="card-sparkle sparkle-one" aria-hidden="true">✦</div>
+          <div class="card-sparkle sparkle-two" aria-hidden="true">✧</div>
+          <div class="welcome-icon" aria-hidden="true">☀</div>
+          <p class="eyebrow" data-i18n="eyebrow">შენი პატარა თავგადასავალი იწყება</p>
+          <h1 id="page-title" data-i18n="title">მოგესალმები Lumina-ში!</h1>
+          <p class="intro" data-i18n="intro">შექმენი ანგარიში და მოემზადე ახალი აღმოჩენებისთვის.</p>
+
+          <form id="signup-form" novalidate>
+            <div class="form-grid">
+              <div class="field">
+                <label for="first-name" data-i18n="firstNameLabel">სახელი</label>
+                <input id="first-name" name="firstName" type="text" autocomplete="given-name" required data-i18n-placeholder="firstNamePlaceholder" placeholder="მაგ. ანა">
+              </div>
+              <div class="field">
+                <label for="last-name" data-i18n="lastNameLabel">გვარი</label>
+                <input id="last-name" name="lastName" type="text" autocomplete="family-name" required data-i18n-placeholder="lastNamePlaceholder" placeholder="მაგ. ბერიძე">
+              </div>
+              <div class="field">
+                <label for="email" data-i18n="emailLabel">ელ-ფოსტა</label>
+                <input id="email" name="email" type="email" autocomplete="email" required data-i18n-placeholder="emailPlaceholder" placeholder="შენი ელ-ფოსტა">
+              </div>
+              <div class="field">
+                <label for="phone" data-i18n="phoneLabel">ტელეფონის ნომერი</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" required data-i18n-placeholder="phonePlaceholder" placeholder="+995 5XX XX XX XX">
+              </div>
+            </div>
+            <button class="submit-button" type="submit">
+              <span data-i18n="submitButton">კოდის გაგზავნა მეილზე</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="form-error" id="signup-error" role="alert" hidden></p>
+          </form>
+          <p class="privacy-note"><span aria-hidden="true">♡</span> <span data-i18n="privacyNote">შენი ინფორმაცია უსაფრთხოდ ინახება</span></p>
+        </section>
+        <button class="text-button" id="show-login" type="button" data-i18n="showLogin">უკვე გაქვთ პროფილი? შესვლა 6-ნიშნა კოდით</button>
+
+        <section class="signup-card secondary-screen" id="verification-screen" aria-labelledby="verification-title" hidden>
+          <div class="welcome-icon verification-icon" aria-hidden="true">✉</div>
+          <p class="eyebrow" data-i18n="verificationEyebrow">ანგარიშის დადასტურება</p>
+          <h1 id="verification-title" data-i18n="verificationTitle">კიდევ ერთი პატარა ნაბიჯი</h1>
+          <form id="verification-form" novalidate>
+            <div class="field">
+              <label for="email-code" data-i18n="emailCodeLabel">მეილზე მიღებული 4-ნიშნა კოდი</label>
+              <input id="email-code" name="emailCode" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="4" data-i18n-placeholder="emailCodePlaceholder" placeholder="მაგ. 1234">
+            </div>
+            <div class="field">
+              <label for="new-passcode" data-i18n="newPasscodeLabel">შექმენით 6-ნიშნა კოდი ან ასოები (ყოველდღიური შესვლისთვის)</label>
+              <input id="new-passcode" name="passcode" type="text" autocomplete="new-password" autocapitalize="off" maxlength="6" data-i18n-placeholder="newPasscodePlaceholder" placeholder="ზუსტად 6 სიმბოლო">
+            </div>
+            <button class="submit-button" type="submit" data-i18n="verifyButton">დადასტურება და შესვლა</button>
+            <p class="form-error" id="verification-error" role="alert" hidden></p>
+          </form>
+        </section>
+
+        <section class="signup-card secondary-screen" id="login-screen" aria-labelledby="login-title" hidden>
+          <div class="welcome-icon" aria-hidden="true">☾</div>
+          <p class="eyebrow" data-i18n="loginEyebrow">მოგესალმები ისევ</p>
+          <h1 id="login-title" data-i18n="loginTitle">ყოველდღიური შესვლა</h1>
+          <p class="intro" data-i18n="loginIntro">შეიყვანე შენი 6-ნიშნა კოდი პროფილში შესასვლელად.</p>
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="login-passcode" data-i18n="loginPasscodeLabel">შენი 6-ნიშნა კოდი</label>
+              <input id="login-passcode" name="passcode" type="text" autocomplete="current-password" autocapitalize="off" maxlength="6" data-i18n-placeholder="loginPasscodePlaceholder" placeholder="შეიყვანე შენი კოდი">
+            </div>
+            <button class="submit-button" type="submit" data-i18n="loginButton">შესვლა</button>
+            <p class="form-error" id="login-error" role="alert" hidden></p>
+          </form>
+          <button class="text-button back-button" id="back-to-signup" type="button" data-i18n="backToSignup">უკან, რეგისტრაციაზე დაბრუნება</button>
+        </section>
+
+        <section class="home-screen" id="home-screen" aria-labelledby="home-title" hidden>
+          <header class="home-header">
+            <div>
+              <p class="eyebrow" data-i18n="homeEyebrow">შენი Lumina სივრცე</p>
+              <h1 id="home-title"><span data-i18n="profileWelcome">მოგესალმები,</span> <span id="profile-name"></span>!</h1>
+              <p class="home-intro" data-i18n="homeIntro">ისწავლე, ითამაშე და აღმოაჩინე ახალი რამ ყოველდღე.</p>
+            </div>
+            <button class="logout-button" id="logout-button" type="button" data-i18n="logoutButton">გასვლა</button>
+          </header>
+
+          <nav class="section-tabs" role="tablist" data-i18n-aria="sectionNavLabel" aria-label="სასწავლო სექციები">
+            <button class="section-tab" id="tab-alphabet" type="button" role="tab" aria-controls="panel-alphabet" aria-selected="true" tabindex="0" data-section="alphabet" data-i18n="alphabetTab">ანბანი</button>
+            <button class="section-tab" id="tab-numbers" type="button" role="tab" aria-controls="panel-numbers" aria-selected="false" tabindex="-1" data-section="numbers" data-i18n="numbersTab">რიცხვები და მათემატიკა</button>
+            <button class="section-tab" id="tab-animals" type="button" role="tab" aria-controls="panel-animals" aria-selected="false" tabindex="-1" data-section="animals" data-i18n="animalsTab">ცხოველები</button>
+            <button class="section-tab" id="tab-library" type="button" role="tab" aria-controls="panel-library" aria-selected="false" tabindex="-1" data-section="library" data-i18n="libraryTab">ფსიქოლოგის ბიბლიოთეკა</button>
+          </nav>
+
+          <section class="learning-panel" id="panel-alphabet" role="tabpanel" aria-labelledby="tab-alphabet">
+            <div class="panel-heading">
+              <div>
+                <h2 data-i18n="alphabetTitle">ქართული ანბანი</h2>
+                <p data-i18n="alphabetIntro">აირჩიე ასო, მოუსმინე მის ჟღერადობას და ივარჯიშე.</p>
+              </div>
+              <span class="section-badge" data-i18n="alphabetCount">33 ასო</span>
+            </div>
+            <div class="alphabet-layout">
+              <div class="letter-grid" id="letter-grid" data-i18n-aria="alphabetGridLabel" aria-label="ქართული ანბანი"></div>
+              <article class="letter-card" aria-live="polite">
+                <span class="letter-display" id="selected-letter">ა</span>
+                <p class="card-caption" data-i18n="exampleWordLabel">სიტყვა ამ ასოზე</p>
+                <h3 id="selected-word">ატამი</h3>
+                <p class="word-translation" id="selected-word-translation"></p>
+                <button class="soft-button" id="speak-letter" type="button" data-i18n="speakLetter">მოსმენა</button>
+              </article>
+            </div>
+            <article class="exercise-card">
+              <div class="exercise-heading">
+                <div>
+                  <p class="eyebrow" data-i18n="dailyPracticeLabel">დღევანდელი ვარჯიში</p>
+                  <h3 data-i18n="letterExerciseTitle">იპოვე სწორი სიტყვა</h3>
+                </div>
+                <span class="exercise-sparkle" aria-hidden="true">✦</span>
+              </div>
+              <p class="exercise-question" id="letter-exercise-question"></p>
+              <div class="choice-list" id="letter-exercise-options"></div>
+              <p class="exercise-feedback" id="letter-exercise-feedback" aria-live="polite"></p>
+            </article>
+          </section>
+
+          <section class="learning-panel" id="panel-numbers" role="tabpanel" aria-labelledby="tab-numbers" hidden>
+            <div class="panel-heading">
+              <div>
+                <h2 data-i18n="numbersTitle">რიცხვები და მათემატიკა</h2>
+                <p data-i18n="numbersIntro">აირჩიე რიცხვი მოსასმენად, შემდეგ ამოხსენი მაგალითი.</p>
+              </div>
+            </div>
+            <div class="number-grid" id="number-grid" data-i18n-aria="numberGridLabel" aria-label="რიცხვები 1-დან 50-მდე"></div>
+            <p class="number-feedback" id="number-feedback" aria-live="polite"></p>
+            <article class="exercise-card math-card">
+              <div class="exercise-heading">
+                <div>
+                  <p class="eyebrow" data-i18n="mathPracticeLabel">მშვიდი მათემატიკური ვარჯიში</p>
+                  <h3 data-i18n="mathTitle">შეკრება და გამოკლება</h3>
+                </div>
+                <div class="stars-counter" id="stars-counter" aria-live="polite"></div>
+              </div>
+              <p class="math-question" id="math-question" aria-live="polite"></p>
+              <form class="answer-form" id="math-form" novalidate>
+                <label class="sr-only" for="math-answer" data-i18n="mathAnswerLabel">პასუხი</label>
+                <input id="math-answer" type="number" inputmode="numeric" data-i18n-placeholder="mathAnswerPlaceholder" placeholder="პასუხი">
+                <button class="soft-button" type="submit" data-i18n="checkAnswer">შემოწმება</button>
+              </form>
+              <p class="exercise-feedback" id="math-feedback" aria-live="polite"></p>
+              <button class="text-button next-problem" id="next-problem" type="button" data-i18n="nextProblem" hidden>შემდეგი მაგალითი</button>
+            </article>
+          </section>
+
+          <section class="learning-panel" id="panel-animals" role="tabpanel" aria-labelledby="tab-animals" hidden>
+            <div class="panel-heading">
+              <div>
+                <h2 data-i18n="animalsTitle">გაიცანი ცხოველები</h2>
+                <p data-i18n="animalsIntro">დააჭირე ბარათს, რომ გაიგო ცხოველის სახელი.</p>
+              </div>
+            </div>
+            <div class="animal-grid" id="animal-grid"></div>
+            <p class="animal-feedback" id="animal-feedback" aria-live="polite"></p>
+          </section>
+
+          <section class="learning-panel" id="panel-library" role="tabpanel" aria-labelledby="tab-library" hidden>
+            <div class="panel-heading">
+              <div>
+                <h2 data-i18n="libraryTitle">ფსიქოლოგის ბიბლიოთეკა</h2>
+                <p data-i18n="libraryIntro">მოკლე ცნობარი მხარდამჭერი და ყოველდღიური მიდგომებისთვის.</p>
+              </div>
+            </div>
+            <p class="library-note" data-i18n="libraryNote">ეს მასალა ზოგადი საგანმანათლებლო ინფორმაციაა და დიაგნოზს ან პროფესიულ შეფასებას არ ცვლის.</p>
+            <div class="library-grid" id="library-grid"></div>
+          </section>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

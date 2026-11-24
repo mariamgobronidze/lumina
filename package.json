@@ -1,0 +1,9 @@
+{
+  "name": "lumina",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Lumina learning app with Vercel email verification",
+  "dependencies": {
+    "nodemailer": "^10.6.1"
+  }
+}
